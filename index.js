@@ -1,4 +1,4 @@
-const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits, ActivityType } = require("discord.js");
 const { joinVoiceChannel } = require("@discordjs/voice");
 
 const client = new Client({
@@ -15,6 +15,8 @@ const CHANNEL_ID = "1403740002575192084";
 
 client.once("ready", () => {
   console.log(`البوت اشتغل: ${client.user.tag}`);
+
+  client.user.setActivity("Music", { type: ActivityType.Listening });
 
   const channel = client.channels.cache.get(CHANNEL_ID);
 
