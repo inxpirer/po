@@ -16,7 +16,10 @@ const CHANNEL_ID = "1403740002575192084";
 client.once("ready", () => {
   console.log(`البوت اشتغل: ${client.user.tag}`);
 
-  client.user.setActivity("Music", { type: ActivityType.Listening });
+  client.user.setActivity("⭐ stars ⭐", {
+    type: ActivityType.Streaming,
+    url: "https://www.twitch.tv/discord"
+  });
 
   const channel = client.channels.cache.get(CHANNEL_ID);
 
