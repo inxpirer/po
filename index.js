@@ -18,7 +18,7 @@ client.once("ready", () => {
 
   client.user.setActivity("⭐ stars ⭐", {
     type: ActivityType.Streaming,
-    url: "https://www.twitch.tv/discord"
+    url: "https://discord.gg/i98"
   });
 
   const channel = client.channels.cache.get(CHANNEL_ID);
