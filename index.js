@@ -2,6 +2,16 @@ const { Client } = require('discord.js-selfbot-v13');
 require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
+
+// HTTP server for Render port binding and UptimeRobot pings
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('Discord AFK Bot is running');
+}).listen(PORT, () => {
+  console.log(`✅ HTTP server listening on port ${PORT}`);
+});
 
 const { GUILD_ID, CHANNEL_ID } = process.env;
 
