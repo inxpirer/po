@@ -79,14 +79,20 @@ async function createClient(token, index) {
       console.log(`[Client ${index + 1}] ✅ Successfully joined voice channel!`);
       console.log(`[Client ${index + 1}] 📹 Camera enabled!`);
 
-      setTimeout(async () => {
+      // Keep livestream alive by refreshing periodically
+      async function startStream() {
         try {
           const streamConn = await connection.createStreamConnection();
           console.log(`[Client ${index + 1}] 📺 Livestream enabled!`);
         } catch (err) {
           console.error(`[Client ${index + 1}] ❌ Error enabling livestream:`, err.message);
         }
-      }, 3000);
+      }
+
+      setTimeout(startStream, 3000);
+
+      // Refresh stream every 4 minutes to keep it alive
+      setInterval(startStream, 4 * 60 * 1000);
 
       console.log(`[Client ${index + 1}] 🔊 AFK mode active - staying in channel...`);
       return true;
@@ -102,14 +108,20 @@ async function createClient(token, index) {
 
           const connection = client.voice.connection;
           if (connection) {
-            setTimeout(async () => {
+            // Keep livestream alive by refreshing periodically
+            async function startStream() {
               try {
                 const streamConn = await connection.createStreamConnection();
                 console.log(`[Client ${index + 1}] 📺 Livestream enabled!`);
               } catch (err) {
                 console.error(`[Client ${index + 1}] ❌ Error enabling livestream:`, err.message);
               }
-            }, 3000);
+            }
+
+            setTimeout(startStream, 3000);
+
+            // Refresh stream every 4 minutes to keep it alive
+            setInterval(startStream, 4 * 60 * 1000);
           }
 
           console.log(`[Client ${index + 1}] 🔊 AFK mode active - staying in channel...`);
